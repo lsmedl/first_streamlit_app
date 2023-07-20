@@ -69,8 +69,9 @@ streamlit.dataframe(my_data_rows)
 #Allow the end user to add a fruit to the list
 my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
 my_cur = my_cnx.cursor()
+my_cur.execute("select * from fruit_load_list")
 my_cur.execute("insert into fruit_load_list values ('" + add_my_fruit + "')")
-add_my_fruit = my_cur.fetchone()
-streamlit.text("The fruit load list contains:")
+add_my_fruit = my_cur.fetchall()
+streamlit.text("Add_My_Fruit:")
 streamlit.text(my_data_rows)
 
