@@ -75,3 +75,5 @@ my_cur = my_cnx.cursor()
 streamlit.header("Add_My_Fruit:")
 streamlit.dataframe(my_data_rows)
 
+streamlit.write('Thanks for adding ', add_my_fruit)
+
