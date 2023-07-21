@@ -99,6 +99,14 @@ if streamlit.button('Add a Fruit to the List'):
     back_from_function = insert_row+snowflake(add_my_fruit)
     streamlit.text(back_from_function)
 
+#Add a button to load the fruit
+if streamlit.button('Get Fruit List'):
+  my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
+  my_data_rows = get fruit_load_list()
+  my_cnx.close()
+  streamlit.dataframe(my_data_rows)
+
+
 
 
 #streamlit.write('The user entered ', fruit_choice)
@@ -107,6 +115,8 @@ if streamlit.button('Add a Fruit to the List'):
 #my_cur = my_cnx.cursor()
 #streamlit.header("Add_My_Fruit:")
 #streamlit.dataframe(my_data_rows)
+
+
 
 #streamlit.write('Thanks for adding ', add_my_fruit)
 
